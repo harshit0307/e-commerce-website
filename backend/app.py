@@ -1,7 +1,6 @@
 from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
 from flask_restx import Api
-from flask_session import Session
 
 from api.ProductService import product_ns
 from config.env_config import DevConfig
@@ -24,7 +23,6 @@ def create_app():
 
     sqldb.init_app(app)
     migrate = Migrate(app, sqldb)
-    Session(app)
     JWTManager(app)
 
     api = Api(app, doc="/docs")
